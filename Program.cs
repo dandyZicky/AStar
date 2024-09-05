@@ -1,21 +1,22 @@
 ﻿// See https://aka.ms/new-console-template for more information
+
 using AStar;
 
-int[] startingPose = [10, 4];
-int[] endPose = [0, 1];
+var grid = new[,]
+{
+    { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
+    { 1, 1, 1, 0, 1, 1, 1, 0, 1, 1 },
+    { 1, 1, 1, 0, 1, 1, 0, 1, 0, 1 },
+    { 0, 0, 1, 0, 1, 0, 0, 0, 0, 1 },
+    { 1, 1, 1, 0, 1, 1, 1, 0, 1, 0 },
+    { 1, 0, 1, 1, 1, 1, 0, 1, 0, 0 },
+    { 1, 0, 0, 0, 0, 1, 0, 0, 0, 1 },
+    { 1, 0, 1, 1, 1, 1, 0, 1, 1, 1 },
+    { 1, 1, 1, 0, 0, 0, 1, 0, 0, 1 }
+};
 
-var search = new Search([11, 4],
-      [4, 4]);
+var startingPose = new Cell(1, 0);
+var endPose = new Cell(6, 10);
+var search = new Search(grid, startingPose, endPose);
 
-search.GridSearch(grid: new int[,]
-        {
-            {1, 0, 1, 1, 1, 1, 0, 1, 1, 1},
-            {1, 1, 1, 0, 1, 1, 1, 0, 1, 1},
-            {1, 1, 1, 0, 1, 1, 0, 1, 0, 1},
-            {0, 0, 1, 0, 1, 0, 0, 0, 0, 1},
-            // {1, 1, 1, 0, 1, 1, 1, 0, 1, 0},
-            // {1, 0, 1, 1, 1, 1, 0, 1, 0, 0},
-            // {1, 0, 0, 0, 0, 1, 0, 0, 0, 1},
-            // {1, 0, 1, 1, 1, 1, 0, 1, 1, 1},
-            // {1, 1, 1, 0, 0, 0, 1, 0, 0, 1}
-        });
+search.GridSearch();
